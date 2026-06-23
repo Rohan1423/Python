@@ -23,11 +23,21 @@ a = 2
 b = 3
 sum = a + b
 print(sum)
-#hekllojkcndkfndks
-""""hghghghgh"""
 
+# Comments
+
+# Single 
+# hekllojkcndkfndks
+
+# Multiple
+""""hghgh
+ghgh"""
+
+# Operators
 print ((a == b) or ( b > a))
 print ((a == b) and ( b > a))
+
+# Type COnversion and Casting
 
 c = 2
 d = 4.25 
@@ -40,3 +50,15 @@ f = 4.55
 print(type(e))
 summm = e + f
 print(summm)
+
+#Input
+
+agee = int(input("Enter Age: ")) # Type Casting
+print("Entered",agee)
+print(type(agee))
+
+first = int(input("Enter first number : "))
+second = int(input("Enter second number : "))
+
+summmm = (first + second) / 2
+print(summmm)
