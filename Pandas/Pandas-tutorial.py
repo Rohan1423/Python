@@ -210,9 +210,20 @@ bios['year_born'] = bios['born_date'].dt.year
 print(bios.groupby([bios['year_born'],bios['month_born']])['name'].count().reset_index().sort_values('name',ascending=False))
 
 # Advanced Functionality
-coffee['yesterday_revenue'] = coffee['revenue'].shift(2)
+coffee['yesterday_revenue'] = coffee['revenue'].shift(2) # shift() -> move the values in the revenue column down by 2 rows
 print(coffee)
 
 coffee['pct_change'] = coffee['revenue'] / coffee['yesterday_revenue'] * 100
 print(coffee)
 
+coffee['cumulative_sum'] = coffee['revenue'].cumsum() # cumsum() -> Each value is the sum of the current value and all previous values
+print(coffee)
+
+latte = coffee[coffee['Coffee Type'] == 'Latte'].copy()
+latte["Last_3_days_Units_Sold"] = latte['Units Sold'].rolling(3).sum() # rolling(3) -> Calculate the 3-row moving sum of the Revenue column
+print(latte)
+
+# rank() assigns a rank (position) to each value based on its order
+bios['height_rank'] = bios['height_cm'].rank() # Smallest value gets Rank 1 by default
+print(bios.sort_values(['height_rank'],ascending=False))
+print(bios.sort_values(['height_rank']).sample(10)[['name','height_rank']]) # sample() -> Randomly selects 10 rows from the sorted DataFrame
